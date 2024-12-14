@@ -4,16 +4,16 @@
     "activo": "ETH",
     "inverso": false,
     "balance_inicial": "4.60831343",
-    "balance_actual": "0.001226977464949365",
+    "balance_actual": "0.0012263718150573894",
     "ganancias_del_grid": "0.0",
-    "ganancia_actual": "-0.6221108966540073",
+    "ganancia_actual": "-0.7614375743535352",
     "riesgo_maximo": "-3.8576395182390906",
     "cantidad_parejeas_long": "4",
     "parejas_completadas": "0",
     "parejas": [
         {
             "general": {
-                "fecha": "2024-12-14 - 04:38:28 PM",
+                "fecha": "2024-12-14 - 04:46:38 PM",
                 "beneficios": "0"
             },
             "compra": {
@@ -25,7 +25,7 @@
                 "fecha_ejecucion": "-"
             },
             "venta": {
-                "orderId": "8a7b022b-e471-4833-8d35-f410d122fb2c",
+                "orderId": "6d8fb4f4-0ced-4c81-96fa-22eb96db66a6",
                 "price": 3867.36,
                 "cantidad": "0.01",
                 "monto": "38.6736",
@@ -38,7 +38,7 @@
         },
         {
             "general": {
-                "fecha": "2024-12-14 - 04:31:03 PM",
+                "fecha": "2024-12-14 - 04:46:20 PM",
                 "beneficios": "0"
             },
             "compra": {
@@ -50,7 +50,7 @@
                 "fecha_ejecucion": "-"
             },
             "venta": {
-                "orderId": "cdf775e7-ac0c-4435-a09c-e7ee189ff19d",
+                "orderId": "f73990b8-2d20-4b53-a4f4-316ac5e804f1",
                 "price": 3845.03,
                 "cantidad": 0.01,
                 "monto": "38.450300000000006",

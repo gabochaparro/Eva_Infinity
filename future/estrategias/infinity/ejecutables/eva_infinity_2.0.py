@@ -42,12 +42,18 @@ def actualizar_interfaz():
         # Mostrar clave como texto no editable
         if clave == 'balance_inicial':
             tk.Label(frame_editor, text=f"Balance Inicial ({base_coin}):", anchor="w", width=27).grid(row=0, column=0, padx=1.8, pady=1.8)
-            label_valor = tk.Label(frame_editor, text=round(float(data['balance_inicial']), 2), anchor="w", width=9)
+            if data['inverso']:
+                label_valor = tk.Label(frame_editor, text=round(float(data['balance_inicial']), 8), anchor="w", width=9)
+            else:
+                label_valor = tk.Label(frame_editor, text=round(float(data['balance_inicial']), 2), anchor="w", width=9)
             label_valor.grid(row=0, column=1, padx=1.8, pady=1.8)
 
         if clave == 'balance_actual':
             tk.Label(frame_editor, text=f"Balance Actual ({base_coin}):", anchor="w", width=27).grid(row=1, column=0, padx=1.8, pady=1.8)
-            label_valor = tk.Label(frame_editor, text=round(float(data['balance_actual']), 2), anchor="w", width=9)
+            if data['inverso']:
+                label_valor = tk.Label(frame_editor, text=round(float(data['balance_actual']), 8), anchor="w", width=9)
+            else:
+                label_valor = tk.Label(frame_editor, text=round(float(data['balance_actual']), 2), anchor="w", width=9)
             label_valor.grid(row=1, column=1, padx=1.8, pady=1.8)
 
         if 'balance_inicial' != clave != 'balance_actual':

@@ -2209,7 +2209,7 @@ def auxiliar():
                 cuenta = inverse.patrimonio(exchange=exchange,symbol=activo)*precio_actual
             else:
                 cuenta = future.patrimonio(exchange=exchange)
-            if not(cuenta*0.999 < monitor < cuenta*1.001):
+            if not(cuenta*0.998 < monitor < cuenta*1.001):
                 monitor = cuenta
                 parametros['balance_inicial'] = str(balance_inicial)
                 parametros['balance_actual'] = str(cuenta)
