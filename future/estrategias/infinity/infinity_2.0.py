@@ -21,7 +21,6 @@ import glob
 
 # GESTIONAR ARCHIVOS DE PARAMETROS Y DE SALIDA
 # --------------------------------------------
-
 # Abrir el archivo parametros.json y cargar su contenido
 parametros = json.load(open("future/estrategias/infinity/parametros_infinity_2.0.json", "r"))
 
