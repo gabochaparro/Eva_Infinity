@@ -85,5 +85,5 @@ def detectar_proximidad_ema_bybit(intervalo="1w", umbral=0.01):
 
 # Ejemplo de uso
 if __name__ == "__main__":
-    activos_cercanos = detectar_proximidad_ema(intervalo="4h", umbral=0.036)
+    activos_cercanos = detectar_proximidad_ema(intervalo="5m", umbral=0.036)
     

@@ -67,7 +67,7 @@ for archivo in archivos:
         print(f"No tienes permisos para eliminar {archivo}.")
 
 # Crear una copia temporal del archivo json con los parametros
-fecha_inicio = int(time.time())
+fecha_inicio = int(time.time())*1000
 if parametros['inverso']:
     parametros_copia = f"future/estrategias/infinity/parametros/{parametros['activo'].upper()}_{parametros['exchange'].upper()}_INVERSO_{fecha_inicio}.json"
 else:
@@ -338,7 +338,7 @@ def actualizar_pareja_long(exchange, symbol):
                                 pareja['compra']['ejecutada'] = True
                                 pareja['compra']['fecha_ejecucion'] = datetime.now().strftime("%Y-%m-%d - %I:%M:%S %p")
                                 pareja['compra']['cantidad'] = str(cantidad)
-                                pareja['compra']['price'] = orden['avgPrice']
+                                pareja['compra']['price'] = str(orden['avgPrice'])
                                 pareja['compra']['monto'] = str(float(pareja['compra']['cantidad'])*float(pareja['compra']['price']))
                                 #print(json.dumps(parejas_compra_venta,indent=2))
                                 break
@@ -355,7 +355,7 @@ def actualizar_pareja_long(exchange, symbol):
                                 pareja['compra']['ejecutada'] = True
                                 pareja['compra']['fecha_ejecucion'] = datetime.now().strftime("%Y-%m-%d - %I:%M:%S %p")
                                 pareja['compra']['cantidad'] = str(cantidad)
-                                pareja['compra']['price'] = orden['avgPrice']
+                                pareja['compra']['price'] = str(orden['avgPrice'])
                                 pareja['compra']['monto'] = str(float(pareja['compra']['cantidad'])*float(pareja['compra']['price']))
                                 #print(json.dumps(parejas_compra_venta,indent=2))
                                 break
@@ -377,8 +377,8 @@ def actualizar_pareja_long(exchange, symbol):
                                     cantidad = orden['qty']
                                 pareja['venta']['ejecutada'] = True
                                 pareja['venta']['fecha_ejecucion'] = datetime.now().strftime("%Y-%m-%d - %I:%M:%S %p")
-                                pareja['venta']['cantidad'] = cantidad
-                                pareja['venta']['price'] = orden['avgPrice']
+                                pareja['venta']['cantidad'] = str(cantidad)
+                                pareja['venta']['price'] = str(orden['avgPrice'])
                                 pareja['venta']['monto'] = str(float(pareja['venta']['cantidad'])*float(pareja['venta']['price']))
                                 if inverso:
                                     pareja['general']['beneficios'] = str((0.9989*(float(pareja['venta']['monto'])-float(pareja['compra']['monto'])))/precio_actual)
@@ -407,8 +407,8 @@ def actualizar_pareja_long(exchange, symbol):
                                     cantidad = orden['origQty']
                                 pareja['venta']['ejecutada'] = True
                                 pareja['venta']['fecha_ejecucion'] = datetime.now().strftime("%Y-%m-%d - %I:%M:%S %p")
-                                pareja['venta']['cantidad'] = cantidad
-                                pareja['venta']['price'] = orden['avgPrice']
+                                pareja['venta']['cantidad'] = str(cantidad)
+                                pareja['venta']['price'] = str(orden['avgPrice'])
                                 pareja['venta']['monto'] = str(float(pareja['venta']['cantidad'])*float(pareja['venta']['price']))
                                 if inverso:
                                     pareja['general']['beneficios'] = str((0.9989*(float(pareja['venta']['monto'])-float(pareja['compra']['monto'])))/precio_actual)
@@ -495,8 +495,8 @@ def actualizar_pareja_short(exchange, symbol):
                                     cantidad = orden['qty']
                                 pareja['compra']['ejecutada'] = True
                                 pareja['compra']['fecha_ejecucion'] = datetime.now().strftime("%Y-%m-%d - %I:%M:%S %p")
-                                pareja['compra']['cantidad'] = cantidad
-                                pareja['compra']['price'] = orden['avgPrice']
+                                pareja['compra']['cantidad'] = str(cantidad)
+                                pareja['compra']['price'] = str(orden['avgPrice'])
                                 pareja['compra']['monto'] = str(float(pareja['compra']['cantidad'])*float(pareja['compra']['price']))
                                 if inverso:
                                     pareja['general']['beneficios'] = str((0.9989*(float(pareja['venta']['monto'])-float(pareja['compra']['monto'])))/precio_actual)
@@ -525,8 +525,8 @@ def actualizar_pareja_short(exchange, symbol):
                                     cantidad = orden['origQty']
                                 pareja['compra']['ejecutada'] = True
                                 pareja['compra']['fecha_ejecucion'] = datetime.now().strftime("%Y-%m-%d - %I:%M:%S %p")
-                                pareja['compra']['cantidad'] = cantidad
-                                pareja['compra']['price'] = orden['avgPrice']
+                                pareja['compra']['cantidad'] = str(cantidad)
+                                pareja['compra']['price'] = str(orden['avgPrice'])
                                 pareja['compra']['monto'] = str(float(pareja['compra']['cantidad'])*float(pareja['compra']['price']))
                                 if inverso:
                                     pareja['general']['beneficios'] = str((0.9989*(float(pareja['venta']['monto'])-float(pareja['compra']['monto'])))/precio_actual)
@@ -561,8 +561,8 @@ def actualizar_pareja_short(exchange, symbol):
                                     cantidad = orden['qty']
                                 pareja['venta']['ejecutada'] = True
                                 pareja['venta']['fecha_ejecucion'] = datetime.now().strftime("%Y-%m-%d - %I:%M:%S %p")
-                                pareja['venta']['cantidad'] = cantidad
-                                pareja['venta']['price'] = orden['avgPrice']
+                                pareja['venta']['cantidad'] = str(cantidad)
+                                pareja['venta']['price'] = str(orden['avgPrice'])
                                 pareja['venta']['monto'] = str(float(pareja['venta']['cantidad'])*float(pareja['venta']['price']))
                                 #print(json.dumps(parejas_compra_venta_short,indent=2))
                                 
@@ -579,8 +579,8 @@ def actualizar_pareja_short(exchange, symbol):
                                     cantidad = orden['origQty']
                                 pareja['venta']['ejecutada'] = True
                                 pareja['venta']['fecha_ejecucion'] = datetime.now().strftime("%Y-%m-%d - %I:%M:%S %p")
-                                pareja['venta']['cantidad'] = orden['origQty']
-                                pareja['venta']['price'] = orden['avgPrice']
+                                pareja['venta']['cantidad'] = str(cantidad)
+                                pareja['venta']['price'] = str(orden['avgPrice'])
                                 pareja['venta']['monto'] = str(float(pareja['venta']['cantidad'])*float(pareja['venta']['price']))
                                 #print(json.dumps(parejas_compra_venta,indent=2))
                                 
@@ -955,7 +955,7 @@ def ordenes_compra(exchange, symbol):
                                                                     },
                                                         "compra": {
                                                                     "orderId": orden_compra['orderId'],
-                                                                    "price": orden_compra['price'],
+                                                                    "price": str(orden_compra['price']),
                                                                     "cantidad": str(cantidad),
                                                                     "monto": str(cantidad*float(orden_compra['price'])),
                                                                     "ejecutada": False,
@@ -996,8 +996,8 @@ def ordenes_compra(exchange, symbol):
                                                                     },
                                                         "compra": {
                                                                     "orderId": orden_compra['orderId'],
-                                                                    "price": orden_compra['price'],
-                                                                    "cantidad": cantidad,
+                                                                    "price": str(orden_compra['price']),
+                                                                    "cantidad": str(cantidad),
                                                                     "monto": str(cantidad*float(orden_compra['price'])),
                                                                     "ejecutada": False,
                                                                     "fecha_ejecucion" : "-"
@@ -1005,7 +1005,7 @@ def ordenes_compra(exchange, symbol):
                                                         "venta": {
                                                                     "orderId": "",
                                                                     "price": str(prox_venta*(1+ganancia_grid/100)),
-                                                                    "cantidad": cantidad,
+                                                                    "cantidad": str(cantidad),
                                                                     "monto": str(cantidad*prox_venta*(1+ganancia_grid/100)),
                                                                     "ejecutada": False,
                                                                     "fecha_ejecucion" : "-"
@@ -1203,7 +1203,7 @@ def ordenes_venta_short(exchange, symbol):
                                                                     },
                                                         "venta": {
                                                                     "orderId": orden_venta['orderId'],
-                                                                    "price": orden_venta['price'],
+                                                                    "price": str(orden_venta['price']),
                                                                     "cantidad": str(cantidad),
                                                                     "monto": str(cantidad*float(orden_venta['price'])),
                                                                     "ejecutada": False,
@@ -1244,8 +1244,8 @@ def ordenes_venta_short(exchange, symbol):
                                                                     },
                                                         "venta": {
                                                                     "orderId": orden_venta['orderId'],
-                                                                    "price": orden_venta['price'],
-                                                                    "cantidad": cantidad,
+                                                                    "price": str(orden_venta['price']),
+                                                                    "cantidad": str(cantidad),
                                                                     "monto": str(cantidad*float(orden_venta['price'])),
                                                                     "ejecutada": False,
                                                                     "fecha_ejecucion" : "-"
@@ -1468,7 +1468,7 @@ def mostrar_lista(data):
                         'activo': activo,
                         'inverso': inverso,
                         'balance_inicial': str(balance_inicial),
-                        'balance_actual': str(cuenta),
+                        'balance_actual': str(cuenta/precio_actual),
                         'ganancias_del_grid': str(ganancias_grid),
                         'ganancia_actual': str(ganancia),
                         'riesgo_maximo': str(riesgo_max),
@@ -1492,7 +1492,7 @@ def mostrar_lista(data):
             json.dump(salida, open(ruta, "w"), indent=4)
 
         # Crear una imagen en blanco
-        img_width, img_height = 360, 300*(len(data)+1)
+        img_width, img_height = 450, 300*(len(data)+1)
         background_color = (35, 35, 40)
         text_color = (200, 200, 200)
         greenlight_color = (0, 255, 0)
@@ -1510,12 +1510,12 @@ def mostrar_lista(data):
             draw.text((10, 10), f" - INFINITY  Future - {activo.upper()} - {datetime.now().strftime('%Y-%m-%d - %I:%M:%S %p')} -", font=font, fill=text_color)
         draw.text((10, 30), f"Balance inicial:", font=font, fill=text_color)
         if inverso:
-            draw.text((180, 30), f"{round(balance_inicial,decimales_moneda)} {activo}", font=font, fill=text_color)
+            draw.text((180, 30), f"{round(balance_inicial,8)} {activo}", font=font, fill=text_color)
         else:
             draw.text((180, 30), f"{round(balance_inicial,2)} USDT", font=font, fill=text_color)
         draw.text((10, 50), f"Balance actual:", font=font, fill=text_color)
         if inverso:
-            draw.text((180, 50), f"{round(inverse.patrimonio(exchange,activo),decimales_moneda)} {activo}", font=font, fill=text_color)
+            draw.text((180, 50), f"{round(inverse.patrimonio(exchange,activo),8)} {activo}", font=font, fill=text_color)
         else:
             draw.text((180, 50), f"{round(future.patrimonio(exchange),2)} USDT", font=font, fill=text_color)
 
