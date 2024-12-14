@@ -4,13 +4,38 @@
     "activo": "ETH",
     "inverso": true,
     "balance_inicial": "0.00120874",
-    "balance_actual": "4.677641028",
+    "balance_actual": "4.719612122",
     "ganancias_del_grid": "0.0",
-    "ganancia_actual": "0.33765594458104947",
+    "ganancia_actual": "1.093278792418424",
     "riesgo_maximo": "-2.08634995784804",
-    "cantidad_parejeas_long": "9",
-    "parejas_completadas": "3",
+    "cantidad_parejeas_long": "10",
+    "parejas_completadas": "4",
     "parejas": [
+        {
+            "general": {
+                "fecha": "2024-12-14 - 05:26:45 PM",
+                "beneficios": "0"
+            },
+            "compra": {
+                "orderId": "5339a40f-1b2e-4842-b07b-7a0fd0329338",
+                "price": 3847.95,
+                "cantidad": "0.00129939318338336",
+                "monto": "5.0",
+                "ejecutada": false,
+                "fecha_ejecucion": "-"
+            },
+            "venta": {
+                "orderId": "",
+                "price": "3859.15",
+                "cantidad": "0.00129939318338336",
+                "monto": "5.014553203653894",
+                "ejecutada": false,
+                "fecha_ejecucion": "-"
+            },
+            "sl": {
+                "orderId": ""
+            }
+        },
         {
             "general": {
                 "fecha": "2024-12-14 - 04:12:47 PM",
@@ -89,7 +114,7 @@
         {
             "general": {
                 "fecha": "2024-12-14 - 02:30:59 PM",
-                "beneficios": "0"
+                "beneficios": "0.0"
             },
             "compra": {
                 "orderId": "81ecf5f4-95bf-49fd-a589-eb2386f9ea91",
@@ -101,11 +126,11 @@
             },
             "venta": {
                 "orderId": "f429d023-d3ea-4703-8f8b-0f9cf807d5d7",
-                "price": "3859.15",
-                "cantidad": "0.00129939318338336",
-                "monto": "5.014553203653894",
-                "ejecutada": false,
-                "fecha_ejecucion": "-"
+                "price": "3859.42432826",
+                "cantidad": 0.0012955300000024154,
+                "monto": "5.0",
+                "ejecutada": true,
+                "fecha_ejecucion": "2024-12-14 - 05:26:36 PM"
             },
             "sl": {
                 "orderId": ""

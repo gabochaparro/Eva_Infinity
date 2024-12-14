@@ -4,13 +4,63 @@
     "activo": "ETH",
     "inverso": false,
     "balance_inicial": "4.60831343",
-    "balance_actual": "0.0012852728447034839",
+    "balance_actual": "0.001298098464128464",
     "ganancias_del_grid": "0.11717097000000018",
-    "ganancia_actual": "3.3403496168011304",
+    "ganancia_actual": "6.244917676964517",
     "riesgo_maximo": "-8.423916599787356",
-    "cantidad_parejeas_long": "3",
+    "cantidad_parejeas_long": "5",
     "parejas_completadas": "1",
     "parejas": [
+        {
+            "general": {
+                "fecha": "2024-12-14 - 05:31:23 PM",
+                "beneficios": "0"
+            },
+            "compra": {
+                "orderId": "",
+                "price": "3845.029414697378",
+                "cantidad": "0.01",
+                "monto": "38.450294146973775",
+                "ejecutada": false,
+                "fecha_ejecucion": "-"
+            },
+            "venta": {
+                "orderId": "e2c1796d-03e5-44db-9782-26f7f32f026a",
+                "price": 3856.18,
+                "cantidad": 0.01,
+                "monto": "38.5618",
+                "ejecutada": false,
+                "fecha_ejecucion": "-"
+            },
+            "sl": {
+                "orderId": ""
+            }
+        },
+        {
+            "general": {
+                "fecha": "2024-12-14 - 05:31:14 PM",
+                "beneficios": "0"
+            },
+            "compra": {
+                "orderId": "",
+                "price": "3856.18",
+                "cantidad": "0.01",
+                "monto": "38.5618",
+                "ejecutada": false,
+                "fecha_ejecucion": "-"
+            },
+            "venta": {
+                "orderId": "4fdf54fd-d401-44f6-8909-4566dc1fe25d",
+                "price": 3867.36,
+                "cantidad": "0.01",
+                "monto": "38.6736",
+                "ejecutada": false,
+                "fecha_ejecucion": "-"
+            },
+            "sl": {
+                "orderId": ""
+            }
+        },
         {
             "general": {
                 "fecha": "2024-12-14 - 05:07:38 PM",

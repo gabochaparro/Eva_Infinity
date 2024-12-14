@@ -4,13 +4,63 @@
     "activo": "ETH",
     "inverso": false,
     "balance_inicial": "4.60831343",
-    "balance_actual": "0.0011836856863316541",
-    "ganancias_del_grid": "0.0",
-    "ganancia_actual": "-5.504430717508732",
-    "riesgo_maximo": "-4.525667864566238",
-    "cantidad_parejeas_long": "3",
-    "parejas_completadas": "0",
+    "balance_actual": "0.0012786072421592124",
+    "ganancias_del_grid": "0.22375359999998956",
+    "ganancia_actual": "3.604817956143237",
+    "riesgo_maximo": "-8.423916599787356",
+    "cantidad_parejeas_long": "5",
+    "parejas_completadas": "1",
     "parejas": [
+        {
+            "general": {
+                "fecha": "2024-12-14 - 05:33:50 PM",
+                "beneficios": "0"
+            },
+            "compra": {
+                "orderId": "28e95a8c-7371-4a26-951d-4a7936339c6b",
+                "price": 3845.03,
+                "cantidad": "0.02",
+                "monto": "76.90060000000001",
+                "ejecutada": false,
+                "fecha_ejecucion": "-"
+            },
+            "venta": {
+                "orderId": "",
+                "price": "3856.18",
+                "cantidad": "0.02",
+                "monto": "77.1236",
+                "ejecutada": false,
+                "fecha_ejecucion": "-"
+            },
+            "sl": {
+                "orderId": ""
+            }
+        },
+        {
+            "general": {
+                "fecha": "2024-12-14 - 05:26:26 PM",
+                "beneficios": "0"
+            },
+            "compra": {
+                "orderId": "aa1fe646-d8d2-4820-93ae-43095cc0409c",
+                "price": 3867.36,
+                "cantidad": 0.02,
+                "monto": "77.3472",
+                "ejecutada": false,
+                "fecha_ejecucion": "-"
+            },
+            "venta": {
+                "orderId": "",
+                "price": "3878.575344",
+                "cantidad": 0.02,
+                "monto": "77.57150687999999",
+                "ejecutada": false,
+                "fecha_ejecucion": "-"
+            },
+            "sl": {
+                "orderId": ""
+            }
+        },
         {
             "general": {
                 "fecha": "2024-12-14 - 05:13:11 PM",
@@ -39,7 +89,7 @@
         {
             "general": {
                 "fecha": "2024-12-14 - 05:02:00 PM",
-                "beneficios": "0"
+                "beneficios": "0.22375359999998956"
             },
             "compra": {
                 "orderId": "af596025-12d3-41e8-b78b-c0d6689708b6",
@@ -51,11 +101,11 @@
             },
             "venta": {
                 "orderId": "92049db6-7500-4fc2-9374-3ce3853e053a",
-                "price": "3856.18",
+                "price": "3856.23",
                 "cantidad": "0.02",
-                "monto": "77.1236",
-                "ejecutada": false,
-                "fecha_ejecucion": "-"
+                "monto": "77.1246",
+                "ejecutada": true,
+                "fecha_ejecucion": "2024-12-14 - 05:26:16 PM"
             },
             "sl": {
                 "orderId": ""

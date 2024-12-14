@@ -1592,18 +1592,22 @@ def imprimir_parejas():
     try:
         parejas_long = copy.deepcopy(parejas_compra_venta)
         parejas_short = copy.deepcopy(parejas_compra_venta_short)
+        monitor = cuenta
         
         while iniciar_estrategia:
 
             # Mostrar parejas Long
-            if parejas_compra_venta != parejas_long:
+            if parejas_compra_venta != parejas_long or not(cuenta*0.998 < monitor < cuenta*1.001):
                 parejas_long = parejas_compra_venta.copy()
+                monitor = cuenta
                 mostrar_lista(parejas_compra_venta)
             
             # Mostrar parejas Short
-            if parejas_compra_venta_short != parejas_short:
+            if parejas_compra_venta_short != parejas_short or not(cuenta*0.998 < monitor < cuenta*1.001):
                 parejas_short = parejas_compra_venta_short.copy()
+                monitor = cuenta
                 mostrar_lista(parejas_compra_venta_short)
+
 
     except Exception as e:
         print("ERROR EN LA FUNCIÓN imprimir_parejas()")
