@@ -4,31 +4,31 @@
     "activo": "ETH",
     "inverso": false,
     "balance_inicial": "4.60831343",
-    "balance_actual": "0.0012263876508242812",
+    "balance_actual": "0.0011836856863316541",
     "ganancias_del_grid": "0.0",
-    "ganancia_actual": "-0.7425046173562961",
-    "riesgo_maximo": "-3.8576395182390906",
+    "ganancia_actual": "-5.504430717508732",
+    "riesgo_maximo": "-4.525667864566238",
     "cantidad_parejeas_long": "3",
     "parejas_completadas": "0",
     "parejas": [
         {
             "general": {
-                "fecha": "2024-12-14 - 05:06:34 PM",
+                "fecha": "2024-12-14 - 05:13:11 PM",
                 "beneficios": "0"
             },
             "compra": {
-                "orderId": "2e89b9cb-3261-4834-a56c-ca9a2d172c1f",
-                "price": 3867.36,
-                "cantidad": 0.02,
-                "monto": "77.3472",
+                "orderId": "4a50a2a4-82c1-4dea-b392-91eb25e435fa",
+                "price": 3833.91,
+                "cantidad": "0.02",
+                "monto": "76.6782",
                 "ejecutada": false,
                 "fecha_ejecucion": "-"
             },
             "venta": {
                 "orderId": "",
-                "price": "3878.575344",
-                "cantidad": 0.02,
-                "monto": "77.57150687999999",
+                "price": "3845.03",
+                "cantidad": "0.02",
+                "monto": "76.90060000000001",
                 "ejecutada": false,
                 "fecha_ejecucion": "-"
             },
@@ -43,14 +43,14 @@
             },
             "compra": {
                 "orderId": "af596025-12d3-41e8-b78b-c0d6689708b6",
-                "price": 3845.03,
+                "price": "3845.03",
                 "cantidad": "0.02",
                 "monto": "76.90060000000001",
-                "ejecutada": false,
-                "fecha_ejecucion": "-"
+                "ejecutada": true,
+                "fecha_ejecucion": "2024-12-14 - 05:12:59 PM"
             },
             "venta": {
-                "orderId": "",
+                "orderId": "92049db6-7500-4fc2-9374-3ce3853e053a",
                 "price": "3856.18",
                 "cantidad": "0.02",
                 "monto": "77.1236",

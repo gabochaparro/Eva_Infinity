@@ -1,7 +1,7 @@
 {
     "exchange": "BYBIT",
     "activo": "ETH",
-    "direccion": "RANGO",
+    "direccion": "LONG",
     "inverso": false,
     "auto": true,
     "pausa": false,
@@ -18,5 +18,5 @@
     "tp": 0,
     "sl": 0,
     "balance_inicial": "4.60831343",
-    "balance_actual": "4.71223371"
+    "balance_actual": "4.96468913"
 }

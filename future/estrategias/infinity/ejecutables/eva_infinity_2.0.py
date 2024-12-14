@@ -33,7 +33,7 @@ def actualizar_interfaz():
     botones_booleanos.clear()
 
     if data['inverso']:
-        base_coin = data['activo']
+        base_coin = data['activo'].upper()
     else:
         base_coin = "USDT"
 
