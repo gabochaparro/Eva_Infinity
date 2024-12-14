@@ -2212,7 +2212,10 @@ def auxiliar():
             if not(cuenta*0.998 < monitor < cuenta*1.001):
                 monitor = cuenta
                 parametros['balance_inicial'] = str(balance_inicial)
-                parametros['balance_actual'] = str(cuenta)
+                if inverso:
+                    parametros['balance_actual'] = str(cuenta/precio_actual)
+                else:
+                    parametros['balance_actual'] = str(cuenta)
                 json.dump(parametros, open(parametros_copia, "w"), indent=4)
             
             # Cambiar el apalancamiento
