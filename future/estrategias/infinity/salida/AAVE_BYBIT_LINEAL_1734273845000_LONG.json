@@ -1,0 +1,390 @@
+{
+    "fecha_inicio": "1734273845000",
+    "exchange": "BYBIT",
+    "activo": "AAVE",
+    "inverso": false,
+    "balance_inicial": "4.99948292",
+    "balance_actual": "0.012924836317627966",
+    "ganancias_del_grid": "0.3304361199999982",
+    "ganancia_actual": "-7.026726275924557",
+    "riesgo_maximo": "-7.435893390350856",
+    "cantidad_parejeas_long": "15",
+    "parejas_completadas": "8",
+    "parejas": [
+        {
+            "general": {
+                "fecha": "2024-12-15 - 03:53:41 PM",
+                "beneficios": "0"
+            },
+            "compra": {
+                "orderId": "55a3241a-645b-4185-b30b-4e550784b1f2",
+                "price": "366.04",
+                "cantidad": "0.02",
+                "monto": "7.3208",
+                "ejecutada": true,
+                "fecha_ejecucion": "2024-12-15 - 03:54:04 PM"
+            },
+            "venta": {
+                "orderId": "09a7428b-2228-4b03-a421-8b3e78341af3",
+                "price": "368.09",
+                "cantidad": "0.02",
+                "monto": "7.3618",
+                "ejecutada": false,
+                "fecha_ejecucion": "-"
+            },
+            "sl": {
+                "orderId": ""
+            }
+        },
+        {
+            "general": {
+                "fecha": "2024-12-15 - 03:04:03 PM",
+                "beneficios": "0.04095489999999948"
+            },
+            "compra": {
+                "orderId": "213e1a06-391c-46f4-89f4-9f0dd95fb3c2",
+                "price": "366.04",
+                "cantidad": "0.02",
+                "monto": "7.3208",
+                "ejecutada": true,
+                "fecha_ejecucion": "2024-12-15 - 03:04:15 PM"
+            },
+            "venta": {
+                "orderId": "d19f6408-1852-4016-b048-677d8783e341",
+                "price": "368.09",
+                "cantidad": "0.02",
+                "monto": "7.3618",
+                "ejecutada": true,
+                "fecha_ejecucion": "2024-12-15 - 03:24:08 PM"
+            },
+            "sl": {
+                "orderId": ""
+            }
+        },
+        {
+            "general": {
+                "fecha": "2024-12-15 - 02:20:08 PM",
+                "beneficios": "0"
+            },
+            "compra": {
+                "orderId": "0bc4c3e8-01e6-485c-a3f1-1ebfa8eceb66",
+                "price": "368.09",
+                "cantidad": "0.02",
+                "monto": "7.3618",
+                "ejecutada": true,
+                "fecha_ejecucion": "2024-12-15 - 02:21:50 PM"
+            },
+            "venta": {
+                "orderId": "858b08ac-5e00-473a-8d13-02f38798481c",
+                "price": "370.15",
+                "cantidad": "0.02",
+                "monto": "7.403",
+                "ejecutada": false,
+                "fecha_ejecucion": "-"
+            },
+            "sl": {
+                "orderId": ""
+            }
+        },
+        {
+            "general": {
+                "fecha": "2024-12-15 - 01:00:00 PM",
+                "beneficios": "0"
+            },
+            "compra": {
+                "orderId": "2bd97bbc-02c2-4954-83c8-32186aaddd2e",
+                "price": "370.15",
+                "cantidad": "0.02",
+                "monto": "7.403",
+                "ejecutada": true,
+                "fecha_ejecucion": "2024-12-15 - 01:00:02 PM"
+            },
+            "venta": {
+                "orderId": "680c1975-e655-46ee-9248-7d6c80441419",
+                "price": "372.22",
+                "cantidad": "0.02",
+                "monto": "7.444400000000001",
+                "ejecutada": false,
+                "fecha_ejecucion": "-"
+            },
+            "sl": {
+                "orderId": ""
+            }
+        },
+        {
+            "general": {
+                "fecha": "2024-12-15 - 12:09:18 PM",
+                "beneficios": "0"
+            },
+            "compra": {
+                "orderId": "5b91fafe-4140-4022-9b4a-63cbc75a7ad1",
+                "price": "376.4",
+                "cantidad": "0.02",
+                "monto": "7.528",
+                "ejecutada": true,
+                "fecha_ejecucion": "2024-12-15 - 12:15:11 PM"
+            },
+            "venta": {
+                "orderId": "408b9b8e-4db5-45ef-ab00-7ad5dbca903c",
+                "price": "378.51",
+                "cantidad": "0.02",
+                "monto": "7.5702",
+                "ejecutada": false,
+                "fecha_ejecucion": "-"
+            },
+            "sl": {
+                "orderId": ""
+            }
+        },
+        {
+            "general": {
+                "fecha": "2024-12-15 - 11:36:50 AM",
+                "beneficios": "0.04215358000000024"
+            },
+            "compra": {
+                "orderId": "169d933e-8bcd-4889-a349-a1087e1ea182",
+                "price": "376.4",
+                "cantidad": "0.02",
+                "monto": "7.528",
+                "ejecutada": true,
+                "fecha_ejecucion": "2024-12-15 - 11:40:18 AM"
+            },
+            "venta": {
+                "orderId": "fa9b4e1b-6bb7-4bc9-bade-3d70dd8920bf",
+                "price": "378.51",
+                "cantidad": "0.02",
+                "monto": "7.5702",
+                "ejecutada": true,
+                "fecha_ejecucion": "2024-12-15 - 12:09:02 PM"
+            },
+            "sl": {
+                "orderId": ""
+            }
+        },
+        {
+            "general": {
+                "fecha": "2024-12-15 - 11:17:18 AM",
+                "beneficios": "0"
+            },
+            "compra": {
+                "orderId": "56e6caae-423e-4804-8e39-9fba41072ffc",
+                "price": "378.51",
+                "cantidad": "0.02",
+                "monto": "7.5702",
+                "ejecutada": true,
+                "fecha_ejecucion": "2024-12-15 - 11:36:29 AM"
+            },
+            "venta": {
+                "orderId": "400a460a-96f1-478d-a36e-49b838b8b9fa",
+                "price": "380.629656",
+                "cantidad": "0.02",
+                "monto": "7.6125931200000005",
+                "ejecutada": false,
+                "fecha_ejecucion": "-"
+            },
+            "sl": {
+                "orderId": ""
+            }
+        },
+        {
+            "general": {
+                "fecha": "2024-12-15 - 11:16:26 AM",
+                "beneficios": "0"
+            },
+            "compra": {
+                "orderId": "7258727b-f274-4ada-80d2-480ea12443bc",
+                "price": "374.3",
+                "cantidad": "0.02",
+                "monto": "7.486000000000001",
+                "ejecutada": true,
+                "fecha_ejecucion": "2024-12-15 - 12:20:59 PM"
+            },
+            "venta": {
+                "orderId": "7f506726-3fe1-448a-a020-2bbc59838743",
+                "price": "376.4",
+                "cantidad": "0.02",
+                "monto": "7.528",
+                "ejecutada": false,
+                "fecha_ejecucion": "-"
+            },
+            "sl": {
+                "orderId": ""
+            }
+        },
+        {
+            "general": {
+                "fecha": "2024-12-15 - 11:14:54 AM",
+                "beneficios": "0"
+            },
+            "compra": {
+                "orderId": "4d7e9453-2c38-4515-a4f9-32fc17559b48",
+                "price": "372.22",
+                "cantidad": "0.02",
+                "monto": "7.444400000000001",
+                "ejecutada": true,
+                "fecha_ejecucion": "2024-12-15 - 12:37:06 PM"
+            },
+            "venta": {
+                "orderId": "d70e5ce2-e2eb-4cf2-9f64-a931f0dee498",
+                "price": "374.3",
+                "cantidad": "0.02",
+                "monto": "7.486000000000001",
+                "ejecutada": false,
+                "fecha_ejecucion": "-"
+            },
+            "sl": {
+                "orderId": ""
+            }
+        },
+        {
+            "general": {
+                "fecha": "2024-12-15 - 11:08:52 AM",
+                "beneficios": "0.04075511999999906"
+            },
+            "compra": {
+                "orderId": "4b4a6ac6-2c94-46f8-9c74-4870715c7c3f",
+                "price": "376.47",
+                "cantidad": "0.02",
+                "monto": "7.529400000000001",
+                "ejecutada": true,
+                "fecha_ejecucion": "2024-12-15 - 11:16:32 AM"
+            },
+            "venta": {
+                "orderId": "8f80dce1-943c-4740-9f93-d5f03baf435c",
+                "price": "378.51",
+                "cantidad": "0.02",
+                "monto": "7.5702",
+                "ejecutada": true,
+                "fecha_ejecucion": "2024-12-15 - 11:36:29 AM"
+            },
+            "sl": {
+                "orderId": ""
+            }
+        },
+        {
+            "general": {
+                "fecha": "2024-12-15 - 11:00:34 AM",
+                "beneficios": "0.04155424000000075"
+            },
+            "compra": {
+                "orderId": "170aec07-7af8-44d7-84b1-a88a53e8abe8",
+                "price": "370.15",
+                "cantidad": "0.02",
+                "monto": "7.403",
+                "ejecutada": true,
+                "fecha_ejecucion": "2024-12-15 - 11:01:45 AM"
+            },
+            "venta": {
+                "orderId": "022e9983-92a5-472c-aee2-171675fe034a",
+                "price": "372.23",
+                "cantidad": "0.02",
+                "monto": "7.4446",
+                "ejecutada": true,
+                "fecha_ejecucion": "2024-12-15 - 11:05:19 AM"
+            },
+            "sl": {
+                "orderId": ""
+            }
+        },
+        {
+            "general": {
+                "fecha": "2024-12-15 - 10:43:26 AM",
+                "beneficios": "0.04175401999999939"
+            },
+            "compra": {
+                "orderId": "b857f00d-48cf-4746-90d8-7dac2990373e",
+                "price": "372.22",
+                "cantidad": "0.02",
+                "monto": "7.444400000000001",
+                "ejecutada": true,
+                "fecha_ejecucion": "2024-12-15 - 10:49:06 AM"
+            },
+            "venta": {
+                "orderId": "b8779331-e03a-4fea-8336-c10867d10334",
+                "price": "374.31",
+                "cantidad": "0.02",
+                "monto": "7.4862",
+                "ejecutada": true,
+                "fecha_ejecucion": "2024-12-15 - 11:08:43 AM"
+            },
+            "sl": {
+                "orderId": ""
+            }
+        },
+        {
+            "general": {
+                "fecha": "2024-12-15 - 10:18:21 AM",
+                "beneficios": "0.04135445999999944"
+            },
+            "compra": {
+                "orderId": "9e3d406a-c2c1-4249-921a-ab25984e01d5",
+                "price": "370.16",
+                "cantidad": "0.02",
+                "monto": "7.403200000000001",
+                "ejecutada": true,
+                "fecha_ejecucion": "2024-12-15 - 10:30:10 AM"
+            },
+            "venta": {
+                "orderId": "ef427a42-b662-4681-8410-84137392f414",
+                "price": "372.23",
+                "cantidad": "0.02",
+                "monto": "7.4446",
+                "ejecutada": true,
+                "fecha_ejecucion": "2024-12-15 - 10:40:44 AM"
+            },
+            "sl": {
+                "orderId": ""
+            }
+        },
+        {
+            "general": {
+                "fecha": "2024-12-15 - 10:07:21 AM",
+                "beneficios": "0.0411546799999999"
+            },
+            "compra": {
+                "orderId": "cf2fe776-04d4-4b79-9c2c-f3426127883a",
+                "price": "368.1",
+                "cantidad": "0.02",
+                "monto": "7.362000000000001",
+                "ejecutada": true,
+                "fecha_ejecucion": "2024-12-15 - 10:18:14 AM"
+            },
+            "venta": {
+                "orderId": "4b41502c-a54d-405a-a7a1-a539ea996b23",
+                "price": "370.16",
+                "cantidad": "0.02",
+                "monto": "7.403200000000001",
+                "ejecutada": true,
+                "fecha_ejecucion": "2024-12-15 - 10:30:10 AM"
+            },
+            "sl": {
+                "orderId": ""
+            }
+        },
+        {
+            "general": {
+                "fecha": "2024-12-15 - 09:44:41 AM",
+                "beneficios": "0.04075511999999995"
+            },
+            "compra": {
+                "orderId": "9e5c5c34-dfa9-4a53-97f5-d827adb2edcf",
+                "price": "364",
+                "cantidad": "0.02",
+                "monto": "7.28",
+                "ejecutada": true,
+                "fecha_ejecucion": "2024-12-15 - 09:47:19 AM"
+            },
+            "venta": {
+                "orderId": "7273a985-7b3c-468c-9596-a53e81080a1b",
+                "price": "366.04",
+                "cantidad": "0.02",
+                "monto": "7.3208",
+                "ejecutada": true,
+                "fecha_ejecucion": "2024-12-15 - 09:53:43 AM"
+            },
+            "sl": {
+                "orderId": ""
+            }
+        }
+    ]
+}

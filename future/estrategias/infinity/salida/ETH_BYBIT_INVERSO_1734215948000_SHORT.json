@@ -1,0 +1,14 @@
+{
+    "fecha_inicio": "1734215948000",
+    "exchange": "BYBIT",
+    "activo": "ETH",
+    "inverso": true,
+    "balance_inicial": "0.00122372",
+    "balance_actual": "0.0012132680092292536",
+    "ganancias_del_grid": "0",
+    "ganancia_actual": "-1.4331269341237238",
+    "riesgo_maximo": "-5.806338657442046",
+    "cantidad_parejeas_long": "0",
+    "parejas_completadas": "0",
+    "parejas": []
+}

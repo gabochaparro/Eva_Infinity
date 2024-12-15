@@ -1,0 +1,14 @@
+{
+    "fecha_inicio": "1734273845000",
+    "exchange": "BYBIT",
+    "activo": "AAVE",
+    "inverso": false,
+    "balance_inicial": "4.99948292",
+    "balance_actual": "0.01296570850291497",
+    "ganancias_del_grid": "0",
+    "ganancia_actual": "-6.711233048876987",
+    "riesgo_maximo": "-7.435893390350856",
+    "cantidad_parejeas_long": "0",
+    "parejas_completadas": "0",
+    "parejas": []
+}

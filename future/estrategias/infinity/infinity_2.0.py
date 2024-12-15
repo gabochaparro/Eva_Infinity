@@ -2229,7 +2229,7 @@ def auxiliar():
                 json.dump(parametros, open(parametros_copia, "w"), indent=4)
             
             # Cambiar el apalancamiento
-            if apalancamiento != float(posiciones[0]['leverage']):
+            if apalancamiento != float(posiciones[0]['leverage']) or apalancamiento != float(posiciones[1]['leverage']):
                 if inverso:
                     inverse.apalancamiento(exchange,activo,apalancamiento)
                 else:
