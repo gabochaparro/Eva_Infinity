@@ -57,7 +57,10 @@ def actualizar_interfaz():
             label_valor.grid(row=1, column=1, padx=1.8, pady=1.8)
 
         if 'balance_inicial' != clave != 'balance_actual':
-            tk.Label(frame_editor, text=f"{clave}:", anchor="w", width=27).grid(row=i + 2, column=0, padx=1.8, pady=1.8)
+            if 'beneficio_max' != clave != 'riego_max':
+                tk.Label(frame_editor, text=f"{clave}:", anchor="w", width=27).grid(row=i + 2, column=0, padx=1.8, pady=1.8)
+            else:
+                tk.Label(frame_editor, text=f"{clave} ({round(valor,2)}%)", anchor="w", width=27, fg="green" if clave=='beneficio_max' else "red").grid(row=i + 2, column=0, padx=1.8, pady=1.8)
 
             if isinstance(valor, bool):  # Crear un botón toggle para valores booleanos
                 if clave == 'pausa':
@@ -114,12 +117,13 @@ def actualizar_interfaz():
                 else:
                     label_valor = tk.Label(frame_editor, text=str(valor).upper(), anchor="w", width=9)
                     label_valor.grid(row=i + 2, column=1, padx=1.8, pady=1.8)
-
+            
             else:  # Otros tipos (int, float, etc.) como campos editables
-                entry = tk.Entry(frame_editor, width=9)
-                entry.insert(0, str(valor).upper())
-                entry.grid(row=i + 2, column=1, padx=1.8, pady=1.8)
-                entries[clave] = entry
+                if 'beneficio_max' != clave != 'riego_max':
+                    entry = tk.Entry(frame_editor, width=9)
+                    entry.insert(0, str(valor).upper())
+                    entry.grid(row=i + 2, column=1, padx=1.8, pady=1.8)
+                    entries[clave] = entry
 
 # Función para alternar valores booleanos
 def toggle_boolean(clave):

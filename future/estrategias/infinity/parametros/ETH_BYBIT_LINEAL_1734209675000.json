@@ -8,8 +8,8 @@
     "apalancamiento": 90,
     "precio_referencia": 0,
     "distancia_grid": 0.18,
-    "ganancia_long": 2.7,
-    "ganancia_short": 1.44,
+    "ganancia_long": 1.44,
+    "ganancia_short": 0,
     "descarga_breakeven": false,
     "invertir_ganancias_grid": false,
     "condicional_long": true,
@@ -18,5 +18,5 @@
     "tp": 0,
     "sl": 0,
     "balance_inicial": "4.60831343",
-    "balance_actual": "4.930606"
+    "balance_actual": "5.09812818"
 }

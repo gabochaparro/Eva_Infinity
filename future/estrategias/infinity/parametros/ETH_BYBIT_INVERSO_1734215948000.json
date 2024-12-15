@@ -1,12 +1,12 @@
 {
     "exchange": "BYBIT",
-    "activo": "eth",
+    "activo": "ETH",
     "direccion": "LONG",
     "inverso": true,
     "auto": false,
     "pausa": false,
     "apalancamiento": 90,
-    "precio_referencia": 0,
+    "precio_referencia": 3870.25,
     "distancia_grid": 0.18,
     "ganancia_long": 0.18,
     "ganancia_short": 0,
@@ -17,6 +17,6 @@
     "umbral_libro": 0,
     "tp": 0,
     "sl": 0,
-    "balance_inicial": "0.00120874",
-    "balance_actual": "4.71824494"
+    "balance_inicial": "0.00122372",
+    "balance_actual": "0.0012274"
 }

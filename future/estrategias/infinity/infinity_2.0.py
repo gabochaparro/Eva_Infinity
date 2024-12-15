@@ -1740,7 +1740,7 @@ def detener_estrategia():
     try:
 
         # Variables globales
-        global iniciar_estrategia, riesgo_max, pausa, balance_inicial, parejas_compra_venta, parejas_compra_venta_short
+        global iniciar_estrategia, riesgo_max, beneficio_max, pausa, balance_inicial, parejas_compra_venta, parejas_compra_venta_short
 
         ti = time.time()
 
@@ -1750,6 +1750,10 @@ def detener_estrategia():
         # Riesgo máximo alcanzado
         if 0 > beneficio < riesgo_max:
             riesgo_max = beneficio
+        
+        # Beneficio máximo alcanzado
+        if 0 < beneficio > beneficio_max:
+            beneficio_max = beneficio
 
         # Ganancias del grid long
         ganancias_grid = 0
@@ -2220,6 +2224,8 @@ def auxiliar():
                     parametros['balance_actual'] = str(cuenta/precio_actual)
                 else:
                     parametros['balance_actual'] = str(cuenta)
+                parametros['beneficio_max'] = str(beneficio_max)
+                parametros['riesgo_max'] = str(riesgo_max)
                 json.dump(parametros, open(parametros_copia, "w"), indent=4)
             
             # Cambiar el apalancamiento
@@ -2501,6 +2507,7 @@ if precio_actual < 0.001:
 parejas_compra_venta = []
 parejas_compra_venta_short = []
 riesgo_max = ganancia_actual()
+beneficio_max = ganancia_actual()
 mostrar_lista(parejas_compra_venta)
 mostrar_lista(parejas_compra_venta_short)
 
