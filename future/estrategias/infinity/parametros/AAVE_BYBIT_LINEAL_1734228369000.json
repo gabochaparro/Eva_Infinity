@@ -8,7 +8,7 @@
     "apalancamiento": 9,
     "precio_referencia": 0,
     "distancia_grid": 0.45,
-    "ganancia_long": 0.27,
+    "ganancia_long": 0.54,
     "ganancia_short": 0,
     "descarga_breakeven": false,
     "invertir_ganancias_grid": false,
@@ -16,5 +16,9 @@
     "condicional_short": true,
     "umbral_libro": 0,
     "tp": 0,
-    "sl": 0
+    "sl": 0,
+    "balance_inicial": "5.32863651",
+    "balance_actual": "5.3305178",
+    "beneficio_max": "0.5673291834274548",
+    "riesgo_max": "-0.46952292491799563"
 }

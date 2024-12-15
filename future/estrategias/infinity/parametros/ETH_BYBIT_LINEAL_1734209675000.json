@@ -4,7 +4,7 @@
     "direccion": "RANGO",
     "inverso": false,
     "auto": true,
-    "pausa": false,
+    "pausa": true,
     "apalancamiento": 90,
     "precio_referencia": 0,
     "distancia_grid": 0.18,
@@ -12,11 +12,11 @@
     "ganancia_short": 0,
     "descarga_breakeven": false,
     "invertir_ganancias_grid": false,
-    "condicional_long": true,
+    "condicional_long": false,
     "condicional_short": true,
     "umbral_libro": 0,
     "tp": 0,
     "sl": 0,
     "balance_inicial": "4.60831343",
-    "balance_actual": "5.09812818"
+    "balance_actual": "5.32917611"
 }

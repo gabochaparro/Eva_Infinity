@@ -1,14 +1,14 @@
 {
     "exchange": "BYBIT",
-    "activo": "ETH",
+    "activo": "aave",
     "direccion": "LONG",
     "inverso": true,
     "auto": false,
     "pausa": false,
-    "apalancamiento": 90,
-    "precio_referencia": 3870.25,
-    "distancia_grid": 0.18,
-    "ganancia_long": 0.18,
+    "apalancamiento": 9,
+    "precio_referencia": 0,
+    "distancia_grid": 0.45,
+    "ganancia_long": 0.27,
     "ganancia_short": 0,
     "descarga_breakeven": false,
     "invertir_ganancias_grid": false,
@@ -16,9 +16,5 @@
     "condicional_short": true,
     "umbral_libro": 0,
     "tp": 0,
-    "sl": 0,
-    "balance_inicial": "0.00122372",
-    "balance_actual": "0.0012333599999999998",
-    "beneficio_max": "1",
-    "riesgo_max": "0.5"
+    "sl": 0
 }

@@ -57,10 +57,10 @@ def actualizar_interfaz():
             label_valor.grid(row=1, column=1, padx=1.8, pady=1.8)
 
         if 'balance_inicial' != clave != 'balance_actual':
-            if 'beneficio_max' != clave != 'riego_max':
+            if 'beneficio_max' != clave != 'riesgo_max':
                 tk.Label(frame_editor, text=f"{clave}:", anchor="w", width=27).grid(row=i + 2, column=0, padx=1.8, pady=1.8)
             else:
-                tk.Label(frame_editor, text=f"{clave} ({round(valor,2)}%)", anchor="w", width=27, fg="green" if clave=='beneficio_max' else "red").grid(row=i + 2, column=0, padx=1.8, pady=1.8)
+                tk.Label(frame_editor, text=f"{clave} ({round(float(valor),2)} %)", anchor="w", width=27, fg="green" if clave=='beneficio_max' else "red").grid(row=i + 2, column=0, padx=1.8, pady=1.8)
 
             if isinstance(valor, bool):  # Crear un botón toggle para valores booleanos
                 if clave == 'pausa':
@@ -119,7 +119,7 @@ def actualizar_interfaz():
                     label_valor.grid(row=i + 2, column=1, padx=1.8, pady=1.8)
             
             else:  # Otros tipos (int, float, etc.) como campos editables
-                if 'beneficio_max' != clave != 'riego_max':
+                if 'beneficio_max' != clave != 'riesgo_max':
                     entry = tk.Entry(frame_editor, width=9)
                     entry.insert(0, str(valor).upper())
                     entry.grid(row=i + 2, column=1, padx=1.8, pady=1.8)
@@ -168,7 +168,7 @@ def monitorear_cambios():
 # Configurar la ventana principal
 ventana = tk.Tk()
 ventana.title(f"Eva Infinity 2.0")
-ventana.geometry("369x720")
+ventana.geometry("396x720")
 ventana.resizable(True, True)
 
 # Botones de carga y guardado
@@ -178,9 +178,38 @@ boton_cargar.pack(pady=5)
 boton_guardar = tk.Button(ventana, text="Guardar", command=guardar_json)
 boton_guardar.pack(pady=5)
 
-# Frame para los editores de claves y valores
-frame_editor = tk.Frame(ventana)
-frame_editor.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
+# Contenedor con Canvas para agregar scroll
+canvas = tk.Canvas(ventana)
+canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=10, pady=10)
+
+scrollbar = tk.Scrollbar(ventana, orient="vertical", command=canvas.yview)
+scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+
+canvas.configure(yscrollcommand=scrollbar.set)
+
+# Frame dentro del Canvas
+frame_editor = tk.Frame(canvas)
+frame_editor_id = canvas.create_window((0, 0), window=frame_editor, anchor="nw")
+
+# Función para ajustar el scroll al contenido
+def ajustar_scroll(event=None):
+    canvas.configure(scrollregion=canvas.bbox("all"))
+
+frame_editor.bind("<Configure>", ajustar_scroll)
+
+# Permitir desplazamiento con la rueda del mouse
+def scroll_mouse(event):
+    if event.num == 4 or event.delta > 0:  # Scroll up
+        canvas.yview_scroll(-1, "units")
+    elif event.num == 5 or event.delta < 0:  # Scroll down
+        canvas.yview_scroll(1, "units")
+
+# Vincular eventos según la plataforma
+if ventana.tk.call("tk", "windowingsystem") == "aqua":  # macOS
+    canvas.bind_all("<Button-4>", scroll_mouse)
+    canvas.bind_all("<Button-5>", scroll_mouse)
+else:  # Windows y Linux
+    canvas.bind_all("<MouseWheel>", scroll_mouse)
 
 # Variables globales
 data = {}
@@ -195,3 +224,4 @@ hilo_monitoreo.start()
 
 # Iniciar la aplicación
 ventana.mainloop()
+
