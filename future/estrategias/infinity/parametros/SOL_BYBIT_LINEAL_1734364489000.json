@@ -1,20 +1,24 @@
 {
     "exchange": "BYBIT",
     "activo": "sol",
-    "direccion": "LONG",
+    "direccion": "RANGO",
     "inverso": false,
     "auto": true,
     "pausa": false,
     "apalancamiento": 18,
     "precio_referencia": 213.68,
     "distancia_grid": 0.18,
-    "ganancia_long": 0.54,
-    "ganancia_short": 0.54,
+    "ganancia_long": 0.45,
+    "ganancia_short": 0.45,
     "descarga_breakeven": false,
     "invertir_ganancias_grid": false,
     "condicional_long": true,
     "condicional_short": true,
     "umbral_libro": 0,
     "tp": 0,
-    "sl": 0
+    "sl": 0,
+    "balance_inicial": "6.07514275",
+    "balance_actual": "6.13718745",
+    "beneficio_max": "1.976673387633559",
+    "riesgo_max": "-21.473896559879186"
 }

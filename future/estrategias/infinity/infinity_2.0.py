@@ -2227,14 +2227,7 @@ def auxiliar():
                 parametros['beneficio_max'] = str(beneficio_max)
                 parametros['riesgo_max'] = str(riesgo_max)
                 json.dump(parametros, open(parametros_copia, "w"), indent=4)
-            
-            # Cambiar el apalancamiento
-            if apalancamiento != float(posiciones[0]['leverage']) or apalancamiento != float(posiciones[1]['leverage']):
-                if inverso:
-                    inverse.apalancamiento(exchange,activo,apalancamiento)
-                else:
-                    future.apalancamiento(exchange,activo,apalancamiento)
-                apalancamiento = parametros['apalancamiento']
+
 
             # Descargar en Break Even
             if parametros['descarga_breakeven']:
@@ -2248,10 +2241,20 @@ def auxiliar():
             # Gestionar la  dirección
             direccion()
 
-            # Reiniciar listas de parejas
-            if pausa and not(parametros['pausa']):
-                parejas_compra_venta = []
-                parejas_compra_venta_short = []
+            # Cambiar el apalancamiento
+            if apalancamiento != float(posiciones[0]['leverage']):
+                if inverso:
+                    inverse.apalancamiento(exchange,activo,apalancamiento)
+                else:
+                    future.apalancamiento(exchange,activo,apalancamiento)
+                apalancamiento = parametros['apalancamiento']
+            if len(posiciones) == 2:
+                if apalancamiento != float(posiciones[1]['leverage']):
+                    if inverso:
+                        inverse.apalancamiento(exchange,activo,apalancamiento)
+                    else:
+                        future.apalancamiento(exchange,activo,apalancamiento)
+                    apalancamiento = parametros['apalancamiento']
 
             # Equilibrar posiciones y take profits
             #equilibrio()
