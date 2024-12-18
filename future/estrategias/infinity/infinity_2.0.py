@@ -1624,6 +1624,7 @@ def ganancia_actual():
         size = 0
         for posicion in posiciones:
             
+            # Obtener el tamaño de las posiciones
             if exchange == "BYBIT":
                 if posicion['positionIdx'] == 0:
                     size = size + float(posicion['size'])
@@ -2217,6 +2218,7 @@ def auxiliar():
                 cuenta = inverse.patrimonio(exchange=exchange,symbol=activo)*precio_actual
             else:
                 cuenta = future.patrimonio(exchange=exchange)
+            
             if not(cuenta*0.998 < monitor < cuenta*1.001):
                 monitor = cuenta
                 parametros['balance_inicial'] = str(balance_inicial)
@@ -2619,8 +2621,8 @@ while iniciar_estrategia:
         # PARAMETROS DE LA ESTRATEGIA
         # ---------------------------
         parametros = json.load(open(parametros_copia, "r"))
-        apalancamiento = parametros['apalancamiento']
-        precio_referencia = parametros['precio_referencia']                                                 # Precio de referencia
+        apalancamiento = float(parametros['apalancamiento'])
+        precio_referencia = float(parametros['precio_referencia'])                                                 # Precio de referencia
         ganancia_grid = float(parametros['distancia_grid'])+comision_grid                                                   # Distancia en porcentaje entre cada grilla (ganancia + comisiones)
         tp = float(parametros['tp'])                                                                        # Take profit para detener la estrategia por completo
         sl = float(parametros['sl'])                                                                        # Stop Loss para detener la estrategia por completo
@@ -2629,11 +2631,11 @@ while iniciar_estrategia:
         ganancia_grid_long = float(parametros['ganancia_long'])                                               # Ganancias por cada grid long
         ganancia_grid_short = float(parametros['ganancia_short'])                                                # Ganancias por cada grid short
         invertir_ganancias_grid = parametros['invertir_ganancias_grid']
-        cantidad_usdt = cuenta*ganancia_grid_long/parametros['distancia_grid']                              # Importe en USDT para cada compra del long
-        cantidad_usdt_short = cuenta*ganancia_grid_short/parametros['distancia_grid']                       # Importe en USDT para cada compra del short
+        cantidad_usdt = cuenta*ganancia_grid_long/float(parametros['distancia_grid'])                              # Importe en USDT para cada compra del long
+        cantidad_usdt_short = cuenta*ganancia_grid_short/float(parametros['distancia_grid'])                       # Importe en USDT para cada compra del short
         condicional_long = parametros['condicional_long']                                                   # Activar condicional de LONG
         condicional_short = parametros['condicional_short']                                                 # Activar condicional de SHORT
-        umbral = parametros['umbral_libro']
+        umbral = int(parametros['umbral_libro'])
         auto = parametros['auto']
         # ---------------------------
             

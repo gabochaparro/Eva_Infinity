@@ -526,7 +526,7 @@ def cambiar_margen(symbol,tradeMode):
         print("")
 # ------------------------------------
 
-#orden = obtener_ordenes("IOUSDT")
+orden = patrimonio()
 #orden = take_profit("IOUSDT","SHORT",3.75,"LIMIT",1)
 #orden = cambiar_margen("XVGUSDT", "ISOLATED")
-#print(json.dumps(orden, indent=2))
+print(json.dumps(orden, indent=2))
