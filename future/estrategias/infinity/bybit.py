@@ -7,8 +7,8 @@ import time
 # Definir la session para Bybit
 bybit_session = HTTP(
                     testnet=False,
-                    api_key=credenciales.bybit_api_key,
-                    api_secret=credenciales.bybit_api_secret,
+                    api_key=credenciales.bybit_subcuenta01_api_key,
+                    api_secret=credenciales.bybit_subcuenta01_api_secret,
                 )
 
 
@@ -86,7 +86,7 @@ def nueva_orden(symbol, order_type, quantity, price, side, leverage):
 
         # Definir la cantidad exacta que permite el bybit
         cantidad_paso = float(bybit_session.get_instruments_info(category="linear", symbol=symbol)['result']['list'][0]['lotSizeFilter']['qtyStep'])
-        quantity = round(round(quantity/cantidad_paso)*cantidad_paso, len(str(cantidad_paso).split(".")))
+        quantity = round(round(quantity/cantidad_paso)*cantidad_paso, len(str(cantidad_paso).split(".")[-1]))
 
         # Coloca la orden "LIMIT"
         if order_type.upper() == "LIMIT":
@@ -413,7 +413,7 @@ def take_profit(symbol, positionSide, stopPrice, type, tpSize=""):
         for orden in ordenes:
             if orden['createdTime'] == str(createdTime) and 0.99*float(stopPrice) <= float(orden['price']) <= 1.01*float(stopPrice) and orden['reduceOnly'] == True:
                 
-                print(f"Take Profit Colocado en {orden["price"]}.")
+                print(f"Take Profit Colocado en {orden['price']}.")
                 print("")
 
                 return {
@@ -464,7 +464,14 @@ def trailing_stop(symbol, positionSide, activationPrice, callbackRate):
 # ----------------------------------------------------
 def patrimonio():
     try:
-        return float(bybit_session.get_wallet_balance(accountType="UNIFIED")['result']['list'][0]['totalEquity'])
+        patrimonio = float(bybit_session.get_wallet_balance(accountType="UNIFIED")['result']['list'][0]['totalEquity'])
+
+        if patrimonio != None:
+            return patrimonio
+        else:
+            print("ERROR OBTENIENDO EL PATRIMONIO ACTUAL")
+            print(patrimonio)
+            print("")
     
     except Exception as e:
         print("ERROR OBTENIENDO EL PATRIMONIO ACTUAL")
@@ -526,7 +533,7 @@ def cambiar_margen(symbol,tradeMode):
         print("")
 # ------------------------------------
 
-orden = patrimonio()
+#orden = nueva_orden("BTCUSDT","LIMIT",0.0014,103500,"BUY",18)
 #orden = take_profit("IOUSDT","SHORT",3.75,"LIMIT",1)
 #orden = cambiar_margen("XVGUSDT", "ISOLATED")
-print(json.dumps(orden, indent=2))
+#print(json.dumps(orden, indent=2))

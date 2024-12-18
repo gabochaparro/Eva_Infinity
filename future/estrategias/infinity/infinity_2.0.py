@@ -2250,6 +2250,7 @@ def auxiliar():
                 else:
                     future.apalancamiento(exchange,activo,apalancamiento)
                 apalancamiento = parametros['apalancamiento']
+            
             if len(posiciones) == 2:
                 if apalancamiento != float(posiciones[1]['leverage']):
                     if inverso:
@@ -2642,8 +2643,15 @@ while iniciar_estrategia:
         # Consultar precio actual
         if inverso:
             precio_actual = inverse_ws.precio_actual
+            if precio_actual == 0:
+                precio_actual = inverse.precio_actual_activo(exchange=exchange, symbol=activo)
+                time.sleep(0.9)
+
         else:
             precio_actual = future_ws.precio_actual
+            if precio_actual == 0:
+                precio_actual = future.precio_actual_activo(exchange=exchange, symbol=activo)
+                time.sleep(0.9)
 
         # Verificar que el hilo detener_estrategia este activo
         if not(hilo_detener_estrategia.is_alive()):

@@ -145,7 +145,7 @@ def nueva_orden(symbol, order_type, quantity, price, side, leverage):
         else:
             price = float(order[0]["price"])
         
-        print(f"Orden {order_type.upper()}-{side} de {order[0]['qty']} {symbol.split('USDT')[0]}  colocada en {price}. ID:", order[0]["orderId"])
+        print(f"Orden {order_type.upper()}-{side} de {order[0]['qty']} {symbol.split('USDT')[0]}  colocada en {price}. ID:", order[0]['orderId'])
         print("")
 
         
@@ -445,8 +445,15 @@ def trailing_stop(symbol, positionSide, activationPrice, callbackRate):
 def patrimonio(symbol):
     try:
         symbol = symbol.upper().split("USD")[0].upper()
-        return float(bybit_session.get_wallet_balance(accountType="UNIFIED", coin=symbol)['result']['list'][0]['coin'][0]['equity'])
+        patrimonio = float(bybit_session.get_wallet_balance(accountType="UNIFIED", coin=symbol)['result']['list'][0]['coin'][0]['equity'])
     
+        if patrimonio != None:
+            return patrimonio
+        else:
+            print("ERROR OBTENIENDO EL PATRIMONIO ACTUAL")
+            print(patrimonio)
+            print("")
+
     except Exception as e:
         print("ERROR OBTENIENDO EL PATRIMONIO ACTUAL")
         print(e)
