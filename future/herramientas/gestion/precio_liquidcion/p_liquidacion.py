@@ -1,6 +1,5 @@
 import credenciales
 import future
-import inverse
 import json
 from pybit.unified_trading import HTTP
 from binance.client import Client

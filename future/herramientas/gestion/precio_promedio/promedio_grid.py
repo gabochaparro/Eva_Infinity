@@ -36,10 +36,16 @@ def promedio_grid(precio_actual, inversion, intervalo, monto_por_compra, apalanc
     print("Precio Liquidación:", precio_liquidacion, "(", round(100*((precio_actual-precio_liquidacion)/precio_actual),2),"%", ")")
     print("")
 
-promedio_grid(
-                precio_actual=95500, 
-                inversion=190, 
-                intervalo=0.36+0.11, 
-                monto_por_compra=200, 
-                apalancamiento=9
+apalancamiento = float(input("Introduce el apalancamiento: "))
+inversion = float(input("Introduce el monto de la inversión: "))
+precio_actual = float(input("Introduce el precio actual: "))
+distancia_grid = float(input("Introduce la distancia del grid: "))
+ganancia_grid = float(input("Introduce la ganancia por grid: "))
+
+promedio_grid( 
+                apalancamiento=apalancamiento,
+                inversion=inversion,
+                precio_actual=precio_actual, 
+                intervalo=distancia_grid+0.11, 
+                monto_por_compra=inversion*ganancia_grid/(distancia_grid+0.11)
             )
