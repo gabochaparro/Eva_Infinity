@@ -36,16 +36,30 @@ def promedio_grid(precio_actual, inversion, intervalo, monto_por_compra, apalanc
     print("Precio Liquidación:", precio_liquidacion, "(", round(100*((precio_actual-precio_liquidacion)/precio_actual),2),"%", ")")
     print("")
 
-apalancamiento = float(input("Introduce el apalancamiento: "))
-inversion = float(input("Introduce el monto de la inversión: "))
-precio_actual = float(input("Introduce el precio actual: "))
-distancia_grid = float(input("Introduce la distancia del grid: "))
-ganancia_grid = float(input("Introduce la ganancia por grid: "))
+continuar = True
+while continuar:
+    try:
+        inversion = float(input("Introduce el monto de la inversión: "))
+        apalancamiento = float(input("Introduce el apalancamiento: "))
+        precio_actual = float(input("Introduce el precio actual: "))
+        distancia_grid = float(input("Introduce la distancia del grid: "))
+        ganancia_grid = float(input("Introduce la ganancia por grid: "))
 
-promedio_grid( 
-                apalancamiento=apalancamiento,
-                inversion=inversion,
-                precio_actual=precio_actual, 
-                intervalo=distancia_grid+0.11, 
-                monto_por_compra=inversion*ganancia_grid/(distancia_grid+0.11)
-            )
+        promedio_grid( 
+                        apalancamiento=apalancamiento,
+                        inversion=inversion,
+                        precio_actual=precio_actual, 
+                        intervalo=distancia_grid+0.11, 
+                        monto_por_compra=inversion*ganancia_grid/(distancia_grid+0.11)
+                    )
+    
+    except Exception as e:
+        print("Valor incorrecto")
+        print("")
+    
+    continuar = input("Seguir Calculando? (Sí/No): ")
+    print("")
+    if continuar == "" or continuar.upper() == "SI" or continuar.upper() == "S" or continuar.upper() == "SÍ":
+        continuar = True
+    else:
+        continuar = False
