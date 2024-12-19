@@ -82,43 +82,46 @@ parametros = json.load(open(parametros_copia, "r"))
 exchange = parametros['exchange'].upper()                                                           # Exchange a utilizar
 inverso = parametros['inverso']                                                                     # Futuros inversos (True/False)
 activo = parametros['activo'].upper()                                                               # Activo a operar
-# Se recomienda un apalancamiento muy bajo para esta estrategia (<=3x)
-apalancamiento = parametros['apalancamiento']
-if inverso:
-    inverse.apalancamiento(exchange,activo,apalancamiento)
-else:
-    future.apalancamiento(exchange,activo,apalancamiento)
+apalancamiento = parametros['apalancamiento']                                                       # Se recomienda un apalancamiento muy bajo para esta estrategia (<=3x)
 precio_referencia = parametros['precio_referencia']                                                 # Precio de referencia
 comision_grid = 0.11
-ganancia_grid = parametros['distancia_grid']+comision_grid                                                  # Distancia en porcentaje entre cada grilla (ganancia + comisiones)
-# Obtener e, monto de la cuenta en USDT
-if inverso:
-    cuenta = inverse.patrimonio(exchange=exchange,symbol=activo)*inverse.precio_actual_activo(exchange,activo)  
-else:
-    cuenta = future.patrimonio(exchange=exchange)                                                   # Inversión de la estrategia
+distancia_grid = parametros['distancia_grid']+comision_grid                                                  # Distancia en porcentaje entre cada grilla (ganancia + comisiones)
 tp = float(parametros['tp'])                                                                        # Take profit para detener la estrategia por completo
 sl = float(parametros['sl'])                                                                        # Stop Loss para detener la estrategia por completo
 tipo = parametros['direccion'].upper()                                                              # LONG o SHORT. Si se deja en blanco opera en ambas direcciones
 ganancia_grid_long = parametros['ganancia_long']                                               # Ganancias por cada grid long
 ganancia_grid_short = parametros['ganancia_short']
-cantidad_usdt = cuenta*ganancia_grid_long/parametros['distancia_grid']                              # Importe en USDT para cada compra del long
-cantidad_usdt_short = cuenta*ganancia_grid_short/parametros['distancia_grid']                       # Importe en USDT para cada compra del short
 condicional_long = parametros['condicional_long']                                                   # Activar condicional de LONG
 condicional_short = parametros['condicional_short']                                                 # Activar condicional de SHORT
 umbral = parametros['umbral_libro']
 auto = parametros['auto']
+invertir_ganancias_grid = parametros['invertir_ganancias_grid']
+breakeven = parametros['descarga_breakeven']
+# ---------------------------
+
+# Cambiar el apalancamiento
+if inverso:
+    inverse.apalancamiento(exchange,activo,apalancamiento)
+else:
+    future.apalancamiento(exchange,activo,apalancamiento)
+
+# Obtener el monto de la cuenta en USDT
+if inverso:
+    cuenta = inverse.patrimonio(exchange=exchange,symbol=activo)*inverse.precio_actual_activo(exchange,activo)  
+else:
+    cuenta = future.patrimonio(exchange=exchange)                                                   # Inversión de la estrategia
+
+# Obtener importe de cada compra
+cantidad_usdt = cuenta*ganancia_grid_long/distancia_grid                              # Importe en USDT para cada compra del long
+cantidad_usdt_short = cuenta*ganancia_grid_short/distancia_grid                       # Importe en USDT para cada compra del short
+
+# Definir el lote
 if exchange == "BYBIT":
     lote = 1
     retraso_api = 2.7
 if exchange == "BINANCE":
     lote = 100
     retraso_api = 7.92
-invertir_ganancias_grid = parametros['invertir_ganancias_grid']
-if parametros['descarga_breakeven']:
-    breakeven = True
-else:
-    breakeven = False
-# ---------------------------
 
 
 # Función que actualiza el grid
@@ -135,7 +138,7 @@ def actualizar_grid():
             while grid[-1] <= precio_actual != 0:
                 
                 # Agregar un nuevo nivel al grid
-                nuevo_nivel = round(grid[-1]*(1+ganancia_grid/100),decimales_precio)
+                nuevo_nivel = round(grid[-1]*(1+distancia_grid/100),decimales_precio)
                 if nuevo_nivel not in grid:
                     grid.append(nuevo_nivel)
                 
@@ -151,7 +154,7 @@ def actualizar_grid():
             while grid[0] >= precio_actual != 0:
                 
                 # Agregar un nuevo nivel al grid
-                nuevo_nivel = round(grid[0]/(1+ganancia_grid/100),decimales_precio)
+                nuevo_nivel = round(grid[0]/(1+distancia_grid/100),decimales_precio)
                 if nuevo_nivel not in grid:
                     grid.insert(0,nuevo_nivel)
                 
@@ -171,7 +174,7 @@ def actualizar_grid():
                 print(grid)
             
             # Generar un nuevo grid
-            if not(0.9*ganancia_grid <= 100*abs(grid[0]-grid[1])/grid[0] <= 1.09*ganancia_grid):
+            if not(0.9*distancia_grid <= 100*abs(grid[0]-grid[1])/grid[0] <= 1.09*distancia_grid):
                 grid = []
                 if precio_referencia == 0:
                     grid.append(precio_actual)
@@ -198,7 +201,7 @@ def prox_compra_venta():
         prox_venta = 0
         while prox_compra == 0 or prox_venta == 0:
             for grilla in grid:
-                if grilla <= precio_actual < grilla*(1+ganancia_grid/100):
+                if grilla <= precio_actual < grilla*(1+distancia_grid/100):
                     prox_compra = grilla
                     if len(grid) > grid.index(grilla)+1:
                         prox_venta = grid[grid.index(grilla)+1]
@@ -271,7 +274,7 @@ def parametros():
             print("Cantidad de cada compra short:", round(cantidad_monedas_short,decimales_moneda), activo)
         else:
             print("Cantidad de cada compra short:", round(cantidad_usdt_short,2), "USDT")
-        print(f"Distancia entre cada grid: {round(ganancia_grid-0.11,3)}%")
+        print(f"Distancia entre cada grid: {round(distancia_grid-0.11,3)}%")
         print(f"Ganancas del grid long: {ganancia_grid_long}%")
         print(f"Ganancas del grid short: {ganancia_grid_short}%")
         print("Cuenta:", round(cuenta,2), "USDT")
@@ -919,7 +922,7 @@ def ordenes_compra(exchange, symbol):
                         
                         # Verificar si tiene un TP
                         for orden in ordenes_abiertas:
-                            if orden['reduceOnly'] and 0.999*(prox_venta*(1+ganancia_grid/100)) < float(orden['price']) < 1.001*(prox_venta*(1+ganancia_grid/100)):
+                            if orden['reduceOnly'] and 0.999*(prox_venta*(1+distancia_grid/100)) < float(orden['price']) < 1.001*(prox_venta*(1+distancia_grid/100)):
                                 orden_condicional_compra_puesta = True
                 
                 # Cantidad de cada compra
@@ -1004,9 +1007,9 @@ def ordenes_compra(exchange, symbol):
                                                                     },
                                                         "venta": {
                                                                     "orderId": "",
-                                                                    "price": str(prox_venta*(1+ganancia_grid/100)),
+                                                                    "price": str(prox_venta*(1+distancia_grid/100)),
                                                                     "cantidad": str(cantidad),
-                                                                    "monto": str(cantidad*prox_venta*(1+ganancia_grid/100)),
+                                                                    "monto": str(cantidad*prox_venta*(1+distancia_grid/100)),
                                                                     "ejecutada": False,
                                                                     "fecha_ejecucion" : "-"
                                                                     },
@@ -1159,7 +1162,7 @@ def ordenes_venta_short(exchange, symbol):
                             if 0.999*float(pareja["venta"]['price']) < prox_compra < 1.001*float(pareja["venta"]['price']):
                                 orden_condicional_venta_puesta = True
                             for orden in ordenes_abiertas:
-                                if orden['reduceOnly'] and 0.999*(prox_compra/(1+ganancia_grid/100)) < float(orden['price']) < 1.001*(prox_compra/(1+ganancia_grid/100)):
+                                if orden['reduceOnly'] and 0.999*(prox_compra/(1+distancia_grid/100)) < float(orden['price']) < 1.001*(prox_compra/(1+distancia_grid/100)):
                                     orden_condicional_venta_puesta = True
                 
                 # Cantidad de cada compra
@@ -1236,9 +1239,9 @@ def ordenes_venta_short(exchange, symbol):
                                                                     },
                                                         "compra": {
                                                                     "orderId": "",
-                                                                    "price": str(prox_compra/(1+ganancia_grid/100)),
+                                                                    "price": str(prox_compra/(1+distancia_grid/100)),
                                                                     "cantidad": str(cantidad),
-                                                                    "monto": str(cantidad*prox_compra/(1+ganancia_grid/100)),
+                                                                    "monto": str(cantidad*prox_compra/(1+distancia_grid/100)),
                                                                     "ejecutada": False,
                                                                     "fecha_ejecucion" : "-"
                                                                     },
@@ -2198,8 +2201,14 @@ def auxiliar():
             # Consultar precio actual
             if inverso:
                 precio_actual = inverse_ws.precio_actual
+            if precio_actual == 0:
+                precio_actual = inverse.precio_actual_activo(exchange=exchange, symbol=activo)
+                time.sleep(0.9)
             else:
                 precio_actual = future_ws.precio_actual
+            if precio_actual == 0:
+                precio_actual = future.precio_actual_activo(exchange=exchange, symbol=activo)
+                time.sleep(0.9)
             
             # Obtener ordenes abiertas
             if inverso:
@@ -2229,13 +2238,6 @@ def auxiliar():
                 parametros['beneficio_max'] = str(beneficio_max)
                 parametros['riesgo_max'] = str(riesgo_max)
                 json.dump(parametros, open(parametros_copia, "w"), indent=4)
-
-
-            # Descargar en Break Even
-            if parametros['descarga_breakeven']:
-                breakeven = True
-            else:
-                breakeven = False
             
             # Mantener margen
             margen()
@@ -2619,26 +2621,33 @@ while iniciar_estrategia:
     try:
         ti = time.time()
 
-        # PARAMETROS DE LA ESTRATEGIA
-        # ---------------------------
-        parametros = json.load(open(parametros_copia, "r"))
-        apalancamiento = float(parametros['apalancamiento'])
-        precio_referencia = float(parametros['precio_referencia'])                                                 # Precio de referencia
-        ganancia_grid = float(parametros['distancia_grid'])+comision_grid                                                   # Distancia en porcentaje entre cada grilla (ganancia + comisiones)
-        tp = float(parametros['tp'])                                                                        # Take profit para detener la estrategia por completo
-        sl = float(parametros['sl'])                                                                        # Stop Loss para detener la estrategia por completo
-        tipo = parametros['direccion'].upper()                                                              # LONG o SHORT. Si se deja en blanco opera en ambas direcciones
-        pausa = parametros['pausa']
-        ganancia_grid_long = float(parametros['ganancia_long'])                                               # Ganancias por cada grid long
-        ganancia_grid_short = float(parametros['ganancia_short'])                                                # Ganancias por cada grid short
-        invertir_ganancias_grid = parametros['invertir_ganancias_grid']
-        cantidad_usdt = cuenta*ganancia_grid_long/float(parametros['distancia_grid'])                              # Importe en USDT para cada compra del long
-        cantidad_usdt_short = cuenta*ganancia_grid_short/float(parametros['distancia_grid'])                       # Importe en USDT para cada compra del short
-        condicional_long = parametros['condicional_long']                                                   # Activar condicional de LONG
-        condicional_short = parametros['condicional_short']                                                 # Activar condicional de SHORT
-        umbral = int(parametros['umbral_libro'])
-        auto = parametros['auto']
-        # ---------------------------
+        try:
+            # PARAMETROS DE LA ESTRATEGIA
+            # ---------------------------
+            parametros = json.load(open(parametros_copia, "r"))
+            apalancamiento = float(parametros['apalancamiento'])
+            precio_referencia = float(parametros['precio_referencia'])                            # Precio de referencia
+            distancia_grid = float(parametros['distancia_grid'])+comision_grid                    # Distancia en porcentaje entre cada grilla (ganancia + comisiones)
+            tp = float(parametros['tp'])                                                          # Take profit para detener la estrategia por completo
+            sl = float(parametros['sl'])                                                          # Stop Loss para detener la estrategia por completo
+            tipo = parametros['direccion'].upper()                                                # LONG o SHORT. Si se deja en blanco opera en ambas direcciones
+            pausa = parametros['pausa']
+            ganancia_grid_long = float(parametros['ganancia_long'])                               # Ganancias por cada grid long
+            ganancia_grid_short = float(parametros['ganancia_short'])                             # Ganancias por cada grid short
+            invertir_ganancias_grid = parametros['invertir_ganancias_grid']
+            condicional_long = parametros['condicional_long']                                     # Activar condicional de LONG
+            condicional_short = parametros['condicional_short']                                   # Activar condicional de SHORT
+            umbral = int(parametros['umbral_libro'])
+            auto = parametros['auto']
+            breakeven = parametros['descarga_breakeven']
+            cantidad_usdt = cuenta*ganancia_grid_long/distancia_grid                              # Importe en USDT para cada compra del long
+            cantidad_usdt_short = cuenta*ganancia_grid_short/distancia_grid                       # Importe en USDT para cada compra del short
+            # ---------------------------
+
+        except Exception as e:
+            print("ERROR LEYENDO PARAMETROS")
+            print(e)
+            print("")
             
         # Consultar precio actual
         if inverso:
